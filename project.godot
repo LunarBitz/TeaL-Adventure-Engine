@@ -16,8 +16,23 @@ _global_script_class_icons={
 [application]
 
 config/name="TeaL Adventure Engine"
+run/main_scene="res://scenes/Blank_Level.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/dpi/allow_hidpi=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "SIsilicon.vfx.godrays" )
 
 [rendering]
 
+threads/thread_model=2
+quality/subsurface_scattering/quality=2
+quality/subsurface_scattering/follow_surface=true
 environment/default_environment="res://default_env.tres"
+quality/godrays/sample_number=50
+quality/godrays/use_pcf5=false
+quality/godrays/dither_amount=1.0

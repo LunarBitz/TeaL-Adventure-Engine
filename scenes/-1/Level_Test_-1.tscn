@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sky.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/global/test_script.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Sky" parent="." instance=ExtResource( 1 )]
+clouds_resolution = 1024
+SCATERRING = false
+multiScatterPhase = 0.0
+clouds_coverage = 0.5
+clouds_size = 2.0
+clouds_softness = 1.0
+moon_light = Color( 0.6, 0.6, 0.8, 1 )
+sunset_light = Color( 1, 0.7, 0.55, 1 )
+sunset_offset = -0.1
+sunset_range = 0.2
+day_light = Color( 1, 1, 1, 1 )
+moon_tint = Color( 1, 0.7, 0.35, 1 )
+clouds_tint = Color( 1, 1, 1, 1 )
+wind_dir = Vector2( 1, 0 )
+wind_strength = 0.1
