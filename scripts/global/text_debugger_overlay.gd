@@ -14,14 +14,16 @@ func _process(delta):
 	label_text += str("FPS: ", fps)
 	label_text += "\n"
 	
+	"""
 	var mem = OS.get_static_memory_usage()
-	label_text += str("Static Memory: ", String.humanize_size(mem))
-	label_text += "\n"
+	label_text += str('Static Memory: ', String.humanize_size(mem))
+	label_text += '\n'
+	"""
 	
 	for s in stats:
 		var value = null
 		
-		if s[1] and weakref(s[1]).get_ref():
+		if is_instance_valid(s[1]):
 			if s[3]:
 				value = s[1].call(s[2])
 			else:
@@ -29,4 +31,4 @@ func _process(delta):
 		label_text += str(s[0], ": ", value)
 		label_text += "\n"
 	
-		$ColorRect/Label.text = label_text
+	$ColorRect.get_child(0).text = label_text

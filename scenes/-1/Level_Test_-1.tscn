@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sky.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/global/test_script.gd" type="Script" id=2]
+[ext_resource path="res://game_objects/players/player/parent/Bitz_Player.tscn" type="PackedScene" id=3]
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
@@ -28,6 +29,10 @@ wind_dir = Vector2( 1, 0 )
 wind_strength = 0.1
 
 [node name="CSGBox" type="CSGBox" parent="."]
+use_collision = true
 width = 22.8243
 height = 0.470267
 depth = 13.722
+
+[node name="KinematicBody" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15567, 0 )

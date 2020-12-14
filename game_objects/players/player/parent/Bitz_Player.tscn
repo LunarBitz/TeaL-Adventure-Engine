@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/player/bitz_controller.gd" type="Script" id=1]
+[ext_resource path="res://scripts/camera/camera_controller.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+
+[sub_resource type="PrismMesh" id=2]
+subdivide_width = 3
+subdivide_height = 3
+subdivide_depth = 3
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.5
+
+[node name="KinematicBody" type="KinematicBody"]
+collision_layer = 32
+script = ExtResource( 1 )
+GRAVITY = -19.62
+ACCEL = 4.05
+MAX_SLOPE_ANGLE = 30.0
+
+[node name="HelperVel" type="Spatial" parent="."]
+
+[node name="VisualMesh" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="VisualMesh"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CSGMesh" type="CSGMesh" parent="VisualMesh"]
+transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0.5, -0.6 )
+mesh = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="Rays" type="Spatial" parent="."]
+
+[node name="RaycastFront" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5 )
+enabled = true
+cast_to = Vector3( 0, -1.25, 0 )
+
+[node name="RaycastBack" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+enabled = true
+cast_to = Vector3( 0, -1.25, 0 )
+
+[node name="RaycastLeft" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.25, 0 )
+
+[node name="RaycastRight" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.25, 0 )
+
+[node name="SpringArm" type="SpringArm" parent="."]
+spring_length = 5.0
+script = ExtResource( 2 )
+mouse_yaw_speed = 8.0
+mouse_pitch_speed = 8.0
+target_parent_path = NodePath("..")
+
+[node name="Camera" type="Camera" parent="SpringArm"]
+current = true
+fov = 90.0
