@@ -10,6 +10,10 @@ script = ExtResource( 2 )
 clouds_resolution = 1024
 SCATERRING = false
 multiScatterPhase = 0.0
+hours = 17
+minutes = 35
+seconds = 0
+time_of_day_setup = 0.732639
 clouds_coverage = 0.5
 clouds_size = 2.0
 clouds_softness = 1.0
@@ -22,3 +26,8 @@ moon_tint = Color( 1, 0.7, 0.35, 1 )
 clouds_tint = Color( 1, 1, 1, 1 )
 wind_dir = Vector2( 1, 0 )
 wind_strength = 0.1
+
+[node name="CSGBox" type="CSGBox" parent="."]
+width = 22.8243
+height = 0.470267
+depth = 13.722
